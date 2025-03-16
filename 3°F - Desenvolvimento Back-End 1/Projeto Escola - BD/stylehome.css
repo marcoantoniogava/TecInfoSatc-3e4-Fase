@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #666363;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fde71c;
+    width: 97%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.title {
+    font-family: Apple Chancery, cursive;
+    color: #000000;
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.login-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.main-photo {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-width: 600px;
+}

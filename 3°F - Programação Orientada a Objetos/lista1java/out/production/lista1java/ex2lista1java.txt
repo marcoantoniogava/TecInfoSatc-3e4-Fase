@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    //declara tudo
+	    String nome, curso, disciplina;
+	    double nota1, nota2, nota3, media;
+	    //faz o scanner
+	    Scanner entrada = new Scanner(System.in);
+	    System.out.print("Digite nome: ");
+	    nome = entrada.nextLine();
+	    System.out.print("Digite curso: ");
+	    curso = entrada.nextLine();
+	    System.out.print("Digite disciplina: ");
+	    disciplina = entrada.nextLine();
+	    System.out.print("Digite a primeira nota: ");
+	    nota1 = entrada.nextInt();
+	    System.out.print("Digite a segunda nota: ");
+	    nota2 = entrada.nextInt();
+	    System.out.print("Digite a terceira nota: ");
+	    nota3 = entrada.nextInt();
+	    media = (nota1 + nota2 + nota3) / 3;
+	    System.out.print("Média: " + media);
+	}
+}

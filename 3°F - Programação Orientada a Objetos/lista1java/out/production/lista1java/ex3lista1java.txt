@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    //declara tudo
+	    String nome, produto;
+	    double quantidade, preco, valor;
+	    //faz o scanner
+	    Scanner entrada = new Scanner(System.in);
+	    System.out.print("Digite nome: ");
+	    nome = entrada.nextLine();
+	    System.out.print("Digite produto: ");
+	    produto = entrada.nextLine();
+	    System.out.print("Digite a quantidade: ");
+	    quantidade = entrada.nextInt();
+	    System.out.print("Digite o preço: ");
+	    preco = entrada.nextInt();
+	    valor = quantidade * preco;
+	    System.out.print("Valor da compra: " + valor);
+	}
+}
