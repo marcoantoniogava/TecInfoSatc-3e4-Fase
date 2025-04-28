@@ -1,4 +1,5 @@
 <?php
+session_start();
 $connect = mysql_connect('localhost','root','');
 $db      = mysql_select_db('loja');
 ?>
@@ -13,14 +14,37 @@ $db      = mysql_select_db('loja');
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src="logodr3aming.jpg" width="200" height="150" alt="Logo Dr3aming Clothing">
-        </div>
-        <div class="login-link">
-            <a href="loginusuario.html"><img src="loginboneco.png" width="105" height="60" alt="Login"></a>
-        </div>
+    <?php
+    // Exibir mensagem de sucesso se existir
+    if(isset($_SESSION['msg_sucesso'])) {
+        echo '<div class="mensagem-sucesso">'.$_SESSION['msg_sucesso'].'</div>';
+        // Limpar a mensagem após exibir
+        unset($_SESSION['msg_sucesso']);
+    }
+    ?>
+<div class="header">
+    <div class="logo">
+        <img src="logodr3aming.jpg" width="200" height="150" alt="Logo Dr3aming Clothing">
     </div>
+    <div class="nav-links">
+        <a href="carrinho.php" class="carrinho-link">
+            Carrinho:
+            <?php
+            // Mostrar quantidade de itens no carrinho
+            if(isset($_SESSION['carrinho'])) {
+                $total_itens = 0;
+                foreach($_SESSION['carrinho'] as $item) {
+                    $total_itens += $item['quantidade'];
+                }
+                echo '<span class="carrinho-contador">'.$total_itens.'</span>';
+            }
+            ?>
+        </a>
+        <a href="loginusuario.html" class="login-link">
+            <img src="loginboneco.png" width="105" height="60" alt="Login">
+        </a>
+    </div>
+</div>
     
     <h1 class="main-title">Dr3aming Clothing</h1>
     
@@ -130,6 +154,19 @@ $db      = mysql_select_db('loja');
                 if (!empty($dados->foto2)) {
                     echo '<img src="fotos/'.$dados->foto2.'" height="120" width="160" alt="Imagem 2 do produto" />';
                 }
+                echo "</div>";
+                
+                // Adicionando o botão de adicionar ao carrinho
+                echo "<div class='produto-acoes'>";
+                echo "<form method='post' action='addcarrinho.php'>";
+                echo "<input type='hidden' name='codproduto' value='".$dados->codproduto."'>";
+                echo "<input type='hidden' name='descricao' value='".$dados->descricao."'>";
+                echo "<input type='hidden' name='cor' value='".$dados->cor."'>";
+                echo "<input type='hidden' name='tamanho' value='".$dados->tamanho."'>";
+                echo "<input type='hidden' name='preco' value='".$dados->preco."'>";
+                echo "<input type='hidden' name='foto1' value='".$dados->foto1."'>";
+                echo "<button type='submit' name='adicionar' class='btn-carrinho'>Adicionar ao Carrinho</button>";
+                echo "</form>";
                 echo "</div>";
                 
                 echo "</div>";
